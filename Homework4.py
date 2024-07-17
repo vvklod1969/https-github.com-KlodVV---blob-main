@@ -1,0 +1,8 @@
+my_string = ("В каком регионе России Вы живете? ")
+print(input(my_string))
+print(len(my_string))
+print(my_string.upper())
+print(my_string.lower())
+print(input(my_string.replace("регионе","городе")))
+print(my_string[0])
+print(my_string[-2])
