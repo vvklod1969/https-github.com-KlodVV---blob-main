@@ -13,16 +13,14 @@ from pprint import pprint
 def custom_write(file_name, strings):
     strings_positions = {}
 
-    with open(file_name, 'w', encoding='utf-8') as file:
-        # файлы можно открывать с помощью менеджера контекста with.
-        # В этом случае файл автоматически закроется, когда работа с ним завершится
-        for i, s in enumerate(strings):
-            key = (i + 1, file.tell())
-            strings_positions[key] = s
-            file.write(s + '\n')
-    # Для записи файла в Python используется функция write().
-    # В качестве аргумента ей следует передать строку, содержимое которой будет записано
-
+    file = open(file_name, 'w', encoding='utf-8')
+    for p, s in enumerate(strings):
+        key = (p + 1, file.tell())
+        strings_positions[key] = s
+        file.write(s + '\n')
+        # Для записи файла в Python используется функция write().
+        # В качестве аргумента ей следует передать строку, содержимое которой будет записано
+    file.close()
     return strings_positions
 
 info = [
