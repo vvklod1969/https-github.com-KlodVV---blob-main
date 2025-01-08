@@ -188,7 +188,7 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    my_token = "7558331550:AAEB_pws82bT41a1pNo3RVN-4XEiGBImV2s"
+    my_token = "Ваш токин"
     bot = Bot(token=my_token)
     dp = Dispatcher(storage=MemoryStorage())
     asyncio.run(main())
