@@ -1,24 +1,28 @@
 from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
 
-# 1. Создаем экземпляр приложения FastAPI
 app = FastAPI()
 
-# 2. Маршрут к главной странице - "/"
-@app.get("/")
+
+@app.get("/", response_class=PlainTextResponse)
 async def welcome_page():
-    return {"message": "Главная страница"}
+    return "Главная страница"
 
-# 3. Маршрут к странице администратора - "/user/admin"
-@app.get("/user/admin")
+
+@app.get("/user/admin", response_class=PlainTextResponse)
 async def admin_page():
-    return {"message": "Вы вошли как администратор"}
+    return "Вы вошли как администратор"
 
-# 4. Маршрут к страницам пользователей с параметром в пути - "/user/{user_id}"
-@app.get("/user/{user_id}")
-async def user_page(user_id: int):
-    return {"message": f"Вы вошли как пользователь № {user_id}"}
 
-# 5. Маршрут к страницам пользователей с данными в адресной строке - "/user"
-@app.get("/user")
+@app.get("/user/{user_id}", response_class=PlainTextResponse)
+async def user_page(user_id: str):
+    return f"Вы вошли как пользователь № {user_id}"
+
+
+@app.get("/user", response_class=PlainTextResponse)
 async def user_query(username: str, age: int):
-    return {"message": f"Информация о пользователе. Имя: {username}, Возраст: {age}"}
+    return f"Информация о пользователе. Имя: {username}, Возраст: {age}"
+
+@app.get("/users/{user_id}", response_class=PlainTextResponse)
+async def users_page(user_id: str):
+    return f"Информация о пользователе № {user_id}"
