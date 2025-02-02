@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+    <h1>Users</h1>
+    {% if users %}
+        <ul>
+            {% for user in users %}
+                <li>
+                    <strong>ID:</strong> {{ user.id }},
+                    <strong>Username:</strong> {{ user.username }},
+                    <strong>Age:</strong> {{ user.age }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No users found.</p>
+    {% endif %}
+</body>
+</html>
